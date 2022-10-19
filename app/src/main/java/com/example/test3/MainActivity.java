@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
-                startService(new Intent(getApplication(), FloatButtonService.class));
+                //startService(new Intent(getApplication(), FloatButtonService.class));
 
 
 
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         quitDialog.setPositiveButton("Да", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                startService(new Intent(getApplication(), FloatButtonService.class));
                 finish();
             }
         });
