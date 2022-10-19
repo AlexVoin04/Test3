@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Test3</string>
+    <string name="start">Оверлей</string>
+    <string name="stop">Выключить оверлей</string>
 </resources>

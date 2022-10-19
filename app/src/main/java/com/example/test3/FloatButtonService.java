@@ -13,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import androidx.annotation.RequiresApi;
+
 public class FloatButtonService extends Service{
     //менеджер к которому цепляем кнопку что бы все время быть на верху
     private WindowManager windowManager;
@@ -21,6 +23,7 @@ public class FloatButtonService extends Service{
     private RelativeLayout topView;
     private UnmaskRelativeLayout contentView;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onCreate() {
         super.onCreate();
@@ -39,7 +42,7 @@ public class FloatButtonService extends Service{
         params= new WindowManager.LayoutParams(
                 WindowManager.LayoutParams.WRAP_CONTENT,
                 WindowManager.LayoutParams.WRAP_CONTENT,
-                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY,
                 WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
                 PixelFormat.TRANSLUCENT);
 
@@ -67,7 +70,9 @@ public class FloatButtonService extends Service{
                         return true;
                     case MotionEvent.ACTION_UP:
                         if(shouldClick)
+                            chatHead.setImageResource(R.drawable.stop);
                             Toast.makeText(getApplicationContext(), "Клик по тосту случился!", Toast.LENGTH_LONG).show();
+
                         return true;
                     case MotionEvent.ACTION_MOVE:
                         shouldClick = false;
